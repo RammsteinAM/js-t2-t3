@@ -2,16 +2,78 @@ html {
   background-color: rgb(39, 39, 39);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+html,
 body {
+  height: 100%;
 }
-tr {
+
+body {
+  margin: 0;
+  padding: 0;
+}
+#data-container {
+  display: grid;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+}
+
+@media screen and (max-width: 1400px) {
+  #data-container {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #data-container {
+    display: grid;
+    grid-template-columns: 33.333% 33.333% 33.333%;
+  }
+}
+
+#notifications {
+  background-color: #424242;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.notification-card {
   color: white;
+  background-color: #ca2b27;
+  margin: 5px;
+  padding: 12px 24px;
+  height: 24px;
+  border-radius: 40px;
 }
-td {
-  padding: 5px 20px;
+
+#start-btn{
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
 }
-.almostDead{
-  color: red;
+
+.data-card {
+  color: white;
+  background-color: #5d2121;
+  background-image: url(./card-bg.png);
+  background-position: center;
+  background-blend-mode: hard-light;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 16px;
+  margin: 8px;
+  border-radius: 5px;
+  text-shadow: 1.5px 1.5px 2px #650000, -1.5px 1.5px 2px #650000, 1.5px -1.5px 2px #650000, -1.5px -1.5px 2px #650000;
+}
+
+.highlight {
+  font-weight: 600;
+  text-shadow: 1.5px 1.5px 2px #2d0000, -1.5px 1.5px 2px #2d0000, 1.5px -1.5px 2px #2d0000, -1.5px -1.5px 2px #2d0000;
+  color: #ffffff;
 }
 
 .custom-modal {

@@ -32,7 +32,7 @@ Array.prototype.sample = function () {
 let gladiators = [];
 const getMillisecondsFromSpeed = speed => 6000 - 1000 * speed;
 const generateGladiators = () => {
-  const n = faker.random.number({ min: 2, max: 8 });
+  const n = faker.random.number({ min: 2, max: 40 });
   faker.locale = "az";
   let i = 0;
   while (i < n) {
@@ -40,7 +40,7 @@ const generateGladiators = () => {
       new Gladiator(
         faker.name.findName(),
         faker.random.number({ min: 80, max: 100 }),
-        faker.random.number({ min: 120, max: 150 }) / 10, //TODO
+        faker.random.number({ min: 20, max: 50 }) / 10,
         faker.random.number({ min: 1000, max: 5000 }) / 1000
       )
     );
@@ -102,6 +102,28 @@ const closeDialog = () => {
   document.getElementById('modal').innerHTML = "";
 }
 
+const addToContainer = (attackerName, opponentName, attackPower) => {
+  const container = document.getElementById('data-container');
+  const html = `<div class="data-card">
+                  <span class="highlight">${attackerName}</span> hits <span class="highlight">${opponentName}</span> with power <span class="highlight">${attackPower}</span>
+                </div>`;
+  container.innerHTML = html + container.innerHTML;
+  if (container.childElementCount > 40) {
+    container.lastChild.remove();
+  }
+  console.log(`${attackerName} hits ${opponentName} with power ${attackPower}`);
+}
+
+const showNotification = (text) => {
+  const notifications = document.getElementById('notifications');
+  const html = `<div class="notification-card">${text}</div>`;
+  notifications.innerHTML = html + notifications.innerHTML;
+  if (notifications.childElementCount > 8) {
+    notifications.lastChild.remove();
+  }
+  console.log(text);
+}
+
 const involveCaesar = gladiator => {
   const listener1 = () => {
     caesarFinish(gladiator);
@@ -113,6 +135,7 @@ const involveCaesar = gladiator => {
 }
 
 const start = () => {
+  document.getElementById('start-btn').style = 'display: none;';
   for (g of gladiators) {
     fight(g, gladiators);
   }
@@ -125,12 +148,12 @@ const continueFight = (gladiators) => {
 }
 
 const caesarFinish = (gladiator) => {
-  console.log(`Caesar showed 👎 to ${gladiator.name}`);
+  showNotification(`Caesar showed 👎 to ${gladiator.name}`);
   continueFight(gladiators.filter(g => g.health > 0));
 }
 
 const caesarLive = (gladiator) => {
-  console.log(`Caesar showed 👍 to ${gladiator.name}`);
+  showNotification(`Caesar showed 👍 to ${gladiator.name}`);
   gladiator.recover();
   continueFight(gladiators.filter(g => g.health > 0));
 }
@@ -143,17 +166,17 @@ async function fight(gladiator, gladiators) {
     }
     if (gladiators.length === 1) {
       if (gladiators[0] === gladiator) {
-        console.log(`${gladiator.name} won the battle with health ${gladiator.health.toFixed(1)}`);
+        showNotification(`${gladiator.name} won the battle with health ${gladiator.health.toFixed(1)}`);
       }
       break;
     }
     const opponent = getAnotherGladiator(gladiators, gladiator);
     gladiator.dealDamage(opponent);
-    console.log(`${gladiator.name} hits ${opponent.name} with power ${gladiator.power}`);
+    addToContainer(gladiator.name, opponent.name, gladiator.power);
     if (opponent.health <= 0) {
       return new Promise((resolve, reject) => {
         involveCaesar(opponent);
-        console.log(`${opponent.name} dying`);
+        showNotification(`${opponent.name} dying`);
         resolve(true);
       });
     }
