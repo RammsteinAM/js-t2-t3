@@ -112,53 +112,6 @@ const involveCaesar = gladiator => {
   openDialog(listener1, listener2, gladiator.name);
 }
 
-/*
-const involveCaesar = gladiator => {
-  const html = `<div class="custom-modal">
-    <div class="modal-bg-overlay"></div>
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">${gladiator.name} is dying!</h4>
-        </div>
-        <div class="modal-body">Caesar's decision</div>
-        <div class="modal-footer">
-          <button id="modal-btn-1" type="button" class="btn">Finish him</button>
-          <button id="modal-btn-2" type="button" class="btn">Live</button>
-        </div>
-      </div>
-    </div>
-  </div>`
-  const btn1MainText = "Finish him";
-  let timeout = 4;
-  let btnClicked = false;
-
-  document.getElementById('modal').innerHTML = html;
-  const btn1 = document.getElementById('modal-btn-1');
-  const btn2 = document.getElementById('modal-btn-2');
-  btn1.addEventListener('click', () => {
-    closeDialog();
-    caesarFinish(gladiator);
-  });
-  btn2.addEventListener('click', () => {
-    closeDialog();
-    caesarLive(gladiator);
-  });
-  //btn1.innerText = `${btn1MainText} (${timeout + 1})`;
-  // const countdown = setInterval(function() {
-  //   btn1.innerText = `${btn1MainText} (${timeout})`;
-  //   if (timeout > 0) { 
-  //     timeout -= 1;
-  //   }
-  //   else {
-  //     debugger;
-  //     btn1.click();
-  //     clearInterval(countdown);
-  //   }
-
-  // }, 1000);
-}*/
-
 const start = () => {
   for (g of gladiators) {
     fight(g, gladiators);
