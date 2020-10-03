@@ -1,0 +1,111 @@
+html {
+  background-color: rgb(39, 39, 39);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+}
+tr {
+  color: white;
+}
+td {
+  padding: 5px 20px;
+}
+.almostDead{
+  color: red;
+}
+
+.custom-modal {
+  position: fixed;
+  top: calc(50% - 130px);
+  width: 500px;
+  left: calc(50% - 250px);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(.3rem - 1px);
+  border-top-right-radius: calc(.3rem - 1px);
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
+  outline: 0;
+}
+
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: .75rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: calc(.3rem - 1px);
+  border-bottom-left-radius: calc(.3rem - 1px);
+}
+
+.modal-footer > * {
+  margin: .25rem;
+}
+
+.custom-modal .modal-dialog {
+  z-index: 99;
+}
+
+.custom-modal .modal-bg-overlay {
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -98;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.custom-modal .btn {
+  min-width: 80px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  cursor: pointer;
+  color: #fff;
+  background-color: #424242;
+  border-color: #212121;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
