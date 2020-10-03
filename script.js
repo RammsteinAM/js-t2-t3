@@ -118,7 +118,7 @@ const showNotification = (text) => {
   const notifications = document.getElementById('notifications');
   const html = `<div class="notification-card">${text}</div>`;
   notifications.innerHTML = html + notifications.innerHTML;
-  if (notifications.childElementCount > 8) {
+  if (notifications.childElementCount > 10) {
     notifications.lastChild.remove();
   }
   console.log(text);
